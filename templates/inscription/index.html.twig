@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('asset/inscription.css') }}" />
+<canvas id="bubbleCanvas"></canvas>
+<div class="register-container">
+        <form method="post" action="/inscription">
+
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Veuillez écrire votre Nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Veuillez écrire votre Prénom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Veuillez écrire votre adresse mail universitaire" required>
+            </div>
+
+            <div class="annee-etude">
+            <label for="annee">Année d'étude</label><br><br>
+            <div class="annee-options">
+                <div class="annee-option">
+                    <input type="checkbox" id="annee1" name="annee1">
+                    <label for="annee1">1ère année</label>
+                </div>
+                <div class="annee-option">
+                    <input type="checkbox" id="annee2" name="annee2">
+                    <label for="annee2">2ème année</label>
+                </div>
+                <div class="annee-option">
+                    <input type="checkbox" id="annee3" name="annee3">
+                    <label for="annee3">3ème année</label>
+                </div>
+            <div class="filiere">
+            <label for="filiere">Filière</label><br><br>
+            <div class="filiere-options">
+                <div class="filiere-option">
+                    <input type="checkbox" id="filiere1" name="filiere1">
+                    <label for="filiere1">MMI</label>
+                </div>
+                <div class="filiere-option">
+                    <input type="checkbox" id="filiere2" name="filiere2">
+                    <label for="filiere2">TC</label>
+                </div>
+                <div class="filiere-option">
+                    <input type="checkbox" id="filiere3" name="filiere3">
+                    <label for="filiere3">GEII</label>
+                </div>
+                <div class="filiere-option">
+                    <input type="checkbox" id="filiere4" name="filiere4">
+                    <label for="filiere4">GEA</label>
+                </div>
+                <div class="filiere-option">
+                    <input type="checkbox" id="filiere5" name="filiere5">
+                    <label for="filiere5">GMP</label>
+                </div>
+                <div class="submit-button">
+                <input type="submit" value="INSCRIPTION" onclick="redirection()">
+            </div>
+        </form>
+    </div>
+
+<script>
+    const canvas = document.getElementById('bubbleCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const bubbles = [];
+
+    function Bubble() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 10;
+        this.radius = Math.random() * 20 + 5;
+        this.speed = Math.random() * 3 + 1;
+
+        this.update = function () {
+            this.y -= this.speed;
+
+            if (this.y < 0 - this.radius) {
+                this.y = canvas.height + 10;
+                this.x = Math.random() * canvas.width;
+            }
+
+            this.draw();
+        }
+
+        this.draw = function () {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+
+    function createBubbles() {
+        for (let i = 0; i < 30; i++) {
+            bubbles.push(new Bubble());
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].update();
+        }
+    }
+
+    createBubbles();
+    animate();
+</script>
+{% endblock %}

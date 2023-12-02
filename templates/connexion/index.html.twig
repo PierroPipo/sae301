@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('asset/connexion.css') }}" />
+<div class="login-container">
+    <div class="profile-picture">
+        <img src="{{ asset('asset/img/profil.svg') }}" alt="profil" />
+    </div>
+    <form method="post" action="/connexion">
+        <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Veuillez écrire votre Nom" required>
+        </div>
+
+        <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Veuillez écrire votre prénom" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Veuillez écrire votre adresse mail universitaire" required>
+        </div>
+
+        <input type="submit" value="CONNEXION">
+    </form>
+</div>
+
+<canvas id="bubbleCanvas"></canvas>
+
+<script>
+    const canvas = document.getElementById('bubbleCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const bubbles = [];
+
+    function Bubble() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 10;
+        this.radius = Math.random() * 20 + 5;
+        this.speed = Math.random() * 3 + 1;
+
+        this.update = function () {
+            this.y -= this.speed;
+
+            if (this.y < 0 - this.radius) {
+                this.y = canvas.height + 10;
+                this.x = Math.random() * canvas.width;
+            }
+
+            this.draw();
+        }
+
+        this.draw = function () {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+
+    function createBubbles() {
+        for (let i = 0; i < 30; i++) {
+            bubbles.push(new Bubble());
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].update();
+        }
+    }
+
+    createBubbles();
+    animate();
+</script>
+{% endblock %}

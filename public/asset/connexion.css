@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    position: relative;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1;
+}
+
+.profile-picture {
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #55B8FF;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    border-radius: 20px;
+    border: 2px solid #000;
+    background: #55B8FF;
+    padding: 8px;
+    width: 300px;
+}
+
+input[type="submit"] {
+    border-radius: 20px;
+    border: 2px solid #000;
+    background: #55B8FF;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+    background: #4aa3d6;
+}
+::placeholder {
+    color: white;
+  }
+    body {
+        background: linear-gradient(to top, #03558f, #aad5ee);
+    }
+    #bubbleCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0; /* Pour placer le canvas en arrière-plan */
+    }
+    input[type="email"] {
+        border-radius: 20px;
+        border: 2px solid #000;
+        background: #55B8FF;
+        padding: 8px;
+        width: 300px;
+    }
+    

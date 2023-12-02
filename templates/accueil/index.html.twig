@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('asset/accueil.css') }}" />
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".devoirs__high").hover(function () {
+            // Récupérez le texte personnalisé à partir de l'attribut data-text
+            var customText = $(this).data("text");
+
+            // Mettez à jour le texte de l'élément .notes avec le texte personnalisé
+            $(".notes h2").text(customText);
+        }, function () {
+            // Réinitialisez le texte de l'élément .notes après le survol
+            $(".notes h2").text("Survoler les devoirs pour faire apparaître la note.");
+        });
+    });
+</script>
+
+
+<body>
+<nav>
+
+    <a href="{{path('app_accueil')}}" class="case">
+        <img src="{{ asset('asset/img/accueil.svg') }}" alt="accueil-icon">
+        <h2>Accueil</h2>
+    </a>
+
+    <a href="{{path('app_calendrier')}}" class="case1">
+        <img src="{{ asset('asset/img/calendrier.png') }}" alt="calendrier-icon">
+        <h2>Calendrier</h2>
+    </a>
+
+    <a href="{{path('app_tchat')}}" class="case">
+        <img src="{{ asset('asset/img/tchat.svg') }}" alt="Tchat-icon">
+        <h2>Tchat</h2>
+    </a>
+
+    <a href="{{path('app_notification')}}" class="case1">
+        <img src="{{ asset('asset/img/notification.png') }}" alt="notif-icon">
+        <h2>Notification</h2>
+    </a>
+
+    <a href="{{path('app_profil')}}" class="case">
+        <img src="{{ asset('asset/img/profil.png') }}" alt="profil-icon">
+        <h2>Profil</h2>
+    </a>
+
+</nav>
+
+<section id="banner">
+
+    <img id="banner__banner" src="{{ asset('asset/img/banner3.png') }}" alt="banner">
+    <img id="banner__logo" src="{{ asset('asset/img/notification.png') }}" alt="logo">
+    <img id="banner__notif" src="{{ asset('asset/img/notification.png') }}" alt="notif">
+    <img id="banner__profil" src="{{ asset('asset/img/profil.png') }}" alt="profil">
+
+</section>
+
+<div class="lastp">
+    <h2>Derniers posts</h2>
+
+</div>
+
+<div class="lastp2">
+    <h2>Note des profs :</h2>
+
+</div>
+
+<section class="fat">
+    <div class="devoirs">
+        <div class="devoirs__high" data-text="Différents types de personas sont données sur des librairies figma sur l'onglet community.">
+            <div class="devoirs__ranger">
+                <h2>UX Design :</h2>
+                <h3>Travaux rendu</h3>
+                <INPUT TYPE="checkbox" NAME= "devoirs__ranger__trav" VALUE="entrée1" checked>
+            </div>
+            <h4>Rendre le maquettage du site + charte graphique + wireframe</h4>
+        </div>
+
+        <div class="devoirs__high" data-text="N'hésitez pas à retourner sur les cours de 214 ainsi que les premiers vu en S1.">
+            <div class="devoirs__ranger">
+                <h2>Dévellopement front :</h2> <h3>Travaux rendu</h3> <INPUT TYPE="checkbox" NAME= "devoirs__ranger__trav" VALUE="entrée1" checked>
+            </div>
+            <h4>Rendre le maquettage du site + charte graphique + wireframe</h4>
+        </div>
+
+        <div class="devoirs__high" data-text="Faire exos de 10 à 14 pour s'avancer et comprendre les matrices.">
+            <div class="devoirs__ranger">
+                <h2>Maths :</h2> <h3>Travaux rendu</h3> <INPUT TYPE="checkbox" NAME= "devoirs__ranger__trav" VALUE="entrée1" checked>
+            </div>
+            <h4>Préparer les exercices.</h4>
+        </div>
+
+
+    </div>
+    <div class="threads">
+        <div class="threads__high">
+                <h2>Thread lié</h2>
+                <a href="#" class="threads__threadlink"><h3>Infos dev back - TP1 (GRP ABCD)</h3></a>
+                <a href="#" class="threads__threadlink"><h3>SAE301 - Derniers rendu en vigueur</h3></a>
+                <a href="#" class="threads__threadlink"><h3>Front - Rendu Sortir dans l'aube</h3></a>
+
+        </div>
+    </div>
+
+</section>
+
+<article class="notes">
+    <h2>Survoler les devoirs pour faire apparaître la note</h2>
+
+</article>
+
+<footer>
+    <div class="ref">
+        <h2>Contact :</h2>
+        <h3>nemp@gmail.com</h3>
+    </div>
+    <div class="ref">
+        <h2> Réseaux Sociaux</h2>
+        <div class="ref__p1">
+            <img class="ref__image " src="./SAE301/Cursed1.png">
+            <h3>capitaine_nemo</h3>
+        </div>
+        <div class="ref__p2">
+            <img class="ref__image " src="./SAE301/Cursed1.png">
+            <h3>PierroPipo</h3>
+        </div>
+    </div>
+</footer>
+{% endblock %}
