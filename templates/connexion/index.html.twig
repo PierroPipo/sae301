@@ -8,7 +8,7 @@
     <div class="profile-picture">
         <img src="{{ asset('asset/img/profil.svg') }}" alt="profil" />
     </div>
-    <form method="post" action="/connexion">
+    <form method="post" action="/accueil" id="connexionForm">
         <div class="form-group">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" placeholder="Veuillez écrire votre Nom" required>
@@ -81,5 +81,9 @@
 
     createBubbles();
     animate();
+
+    function redirection() {
+    window.location.href = "{{path('app_accueil')}}";
+}
 </script>
 {% endblock %}

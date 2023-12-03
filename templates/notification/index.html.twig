@@ -1,20 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NotificationController!{% endblock %}
+{% block title %}Notification{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<link rel="stylesheet" href="{{ asset('asset/notification.css') }}" />
+<body>
+<nav>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <a href="{{path('app_accueil')}}" class="case">
+        <img src="{{ asset('asset/img/accueil.svg') }}" alt="accueil-icon">
+        <h2>Accueil</h2>
+    </a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/sae301/src/Controller/NotificationController.php'|file_link(0) }}">src/Controller/NotificationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/sae301/templates/notification/index.html.twig'|file_link(0) }}">templates/notification/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{path('app_calendrier')}}" class="case1">
+        <img src="{{ asset('asset/img/calendrier.png') }}" alt="calendrier-icon">
+        <h2>Calendrier</h2>
+    </a>
+
+    <a href="{{path('app_tchat')}}" class="case">
+        <img src="{{ asset('asset/img/tchat.svg') }}" alt="Tchat-icon">
+        <h2>Tchat</h2>
+    </a>
+
+    <a href="{{path('app_notification')}}" class="case1">
+        <img src="{{ asset('asset/img/notification.png') }}" alt="notif-icon">
+        <h2>Notification</h2>
+    </a>
+
+    <a href="{{path('app_profil')}}" class="case">
+        <img src="{{ asset('asset/img/profil.png') }}" alt="profil-icon">
+        <h2>Profil</h2>
+    </a>
+
+</nav>
+
+<section id="banner">
+
+    <img id="banner__banner" src="{{ asset('asset/img/banner3.png') }}" alt="banner">
+    <img id="banner__logo" src="{{ asset('asset/img/logo.png') }}" alt="logo">
+    <img id="banner__notif" src="{{ asset('asset/img/notification.png') }}" alt="notif">
+    <img id="banner__profil" src="{{ asset('asset/img/profil.png') }}" alt="profil">
+
+</section>
+
+<footer>
+    <div class="ref">
+        <h2>Contact :</h2>
+        <h3>nemp@gmail.com</h3>
+    </div>
+    <div class="ref">
+        <h2> Réseaux Sociaux</h2>
+        <div class="ref__p1">
+            <img class="ref__image " src="{{ asset('asset/img/instagram.png') }}" alt="Instagram">
+            <h3>capitaine_nemo</h3>
+        </div>
+        <div class="ref__p2">
+            <img class="ref__image " src="./SAE301/Cursed1.png">
+            <h3>PierroPipo</h3>
+        </div>
+    </div>
+</footer>
 {% endblock %}

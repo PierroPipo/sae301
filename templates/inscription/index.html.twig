@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset('asset/inscription.css') }}" />
 <canvas id="bubbleCanvas"></canvas>
 <div class="register-container">
-        <form method="post" action="/inscription">
+        <form method="post" action="/inscription" id="inscriptionForm">
 
             <div class="form-group">
                 <label for="nom">Nom</label>
@@ -118,5 +118,10 @@
 
     createBubbles();
     animate();
+
+    function redirection() {
+    window.location.href = "{{path('app_connexion')}}";
+}
+
 </script>
 {% endblock %}
