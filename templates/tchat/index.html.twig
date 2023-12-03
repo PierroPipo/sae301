@@ -43,6 +43,34 @@
 
 </section>
 
+<div class="container">
+    <!-- Zone de conversation avec d'autres personnes -->
+    <div class="conversation-zone">
+        <h2>Conversations</h2>
+        <ul class="conversation-list">
+            <li class="conversation-item">Conversation 1</li>
+            <li class="conversation-item">Conversation 2</li>
+            <li class="conversation-item">Conversation 3</li>
+            <li class="conversation-item">Conversation 4</li>
+            <li class="conversation-item">Conversation 5</li>
+            <li class="conversation-item">Conversation 6</li>
+            <!-- Vous pouvez remplir cette liste avec les différentes conversations -->
+        </ul>
+    </div>
+
+    <!-- Votre chatbox actuelle -->
+    <div class="chatbox">
+        <!-- Structure de la zone de chat -->
+        <div class="messages">
+            <!-- Structure des messages -->
+        </div>
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="Ecrire un message..." />
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+</div>
+
 <footer>
     <div class="ref">
         <h2>Contact :</h2>
@@ -60,5 +88,69 @@
         </div>
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const messageForm = document.getElementById('message-form');
+    const messageInput = document.getElementById('message-input');
+    const messagesDiv = document.querySelector('.messages');
+
+    messageForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const messageText = messageInput.value.trim();
+        if (messageText !== '') {
+            const message = document.createElement('div');
+            message.classList.add('message');
+            message.innerText = messageText;
+            messagesDiv.appendChild(message);
+            messageInput.value = '';
+            // Scroll automatique vers le bas pour voir le dernier message
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const messageForm = document.getElementById('message-form');
+    const messageInput = document.getElementById('message-input');
+    const chatbox = document.getElementById('chatbox'); // La zone de chat
+
+    const conversationList = document.querySelectorAll('.conversation-item');
+
+    conversationList.forEach(function(conversation) {
+        conversation.addEventListener('click', function(event) {
+            // Remplace le contenu de la zone de chat par une nouvelle conversation vide
+            chatbox.innerHTML = `
+                <div class="messages">
+                    <!-- Structure des messages -->
+                </div>
+                <form id="message-form">
+                    <input type="text" id="message-input" placeholder="Ecrire un message..." />
+                    <button type="submit">Envoyer</button>
+                </form>
+            `;
+        });
+    });
+
+    messageForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const messageText = messageInput.value.trim();
+        if (messageText !== '') {
+            const message = document.createElement('div');
+            message.classList.add('message');
+            message.innerText = messageText;
+
+            const messagesDiv = document.querySelector('.messages');
+            messagesDiv.appendChild(message);
+
+            messageInput.value = '';
+
+            // Scroll automatique vers le bas pour voir le dernier message
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    });
+});
+
+</script>
+
 </body>
 {% endblock %}

@@ -42,7 +42,35 @@
     <img id="banner__profil" src="{{ asset('asset/img/profil.png') }}" alt="profil">
 
 </section>
-
+<div class="container">
+        <div class="avatar-selection">
+            <h2>Choisissez votre avatar :</h2>
+            <div class="avatar-list">
+                <!-- Liste des avatars -->
+                
+                <img class="avatar" src="{{ asset('asset/img/avatar1.png') }}"" alt="Avatar 1">
+                <img class="avatar" src="{{ asset('asset/img/avatar2.png') }}"" alt="Avatar 2">
+                <img class="avatar" src="{{ asset('asset/img/avatar3.png') }}"" alt="Avatar 3">
+                <img class="avatar" src="{{ asset('asset/img/avatar4.png') }}"" alt="Avatar 4">
+                <img class="avatar" src="{{ asset('asset/img/avatar5.png') }}"" alt="Avatar 5">
+                <img class="avatar" src="{{ asset('asset/img/avatar6.png') }}"" alt="Avatar 6">
+                <img class="avatar" src="{{ asset('asset/img/avatar7.png') }}"" alt="Avatar 7">
+                <img class="avatar" src="{{ asset('asset/img/avatar8.png') }}"" alt="Avatar 8">
+                <img class="avatar" src="{{ asset('asset/img/avatar9.png') }}"" alt="Avatar 9">
+                <img class="avatar" src="{{ asset('asset/img/avatar10.png') }}"" alt="Avatar 10">
+                <img class="avatar" src="{{ asset('asset/img/avatar11.png') }}"" alt="Avatar 11">
+                <img class="avatar" src="{{ asset('asset/img/avatar12.png') }}"" alt="Avatar 12">
+                <img class="avatar" src="{{ asset('asset/img/avatar13.png') }}"" alt="Avatar 13">
+                <img class="avatar" src="{{ asset('asset/img/avatar14.png') }}"" alt="Avatar 14">
+                <img class="avatar" src="{{ asset('asset/img/avatar15.png') }}"" alt="Avatar 15">
+                <img class="avatar" src="{{ asset('asset/img/avatar16.png') }}"" alt="Avatar 16">
+                <img class="avatar" src="{{ asset('asset/img/avatar17.png') }}"" alt="Avatar 17">
+                <img class="avatar" src="{{ asset('asset/img/avatar18.png') }}"" alt="Avatar 18">
+            </div>
+            <button id="select-avatar">Sélectionner</button>
+            <p class="confirmation-message">Votre changement de profil a été enregistré.</p>
+        </div>
+    </div>
 <footer>
     <div class="ref">
         <h2>Contact :</h2>
@@ -60,4 +88,33 @@
         </div>
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const avatars = document.querySelectorAll('.avatar');
+    const selectButton = document.getElementById('select-avatar');
+    const confirmationMessage = document.querySelector('.confirmation-message');
+
+    avatars.forEach(function(avatar) {
+        avatar.addEventListener('click', function(event) {
+            // Supprimer la bordure bleue des autres avatars
+            avatars.forEach(function(a) {
+                a.classList.remove('selected-avatar');
+            });
+
+            // Ajouter la bordure bleue à l'avatar sélectionné
+            avatar.classList.add('selected-avatar');
+        });
+    });
+
+    selectButton.addEventListener('click', function() {
+        // Vérifier l'avatar sélectionné
+        const selectedAvatar = document.querySelector('.selected-avatar');
+        if (selectedAvatar) {
+            // Afficher le message de confirmation
+            confirmationMessage.style.display = 'block';
+        }
+    });
+});
+</script>
+</body>
 {% endblock %}

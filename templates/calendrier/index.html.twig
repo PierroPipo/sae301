@@ -4,6 +4,10 @@
 
 {% block body %}
 <link rel="stylesheet" href="{{ asset('asset/calendrier.css') }}" />
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.10/index.global.min.js'></script>
+<script src="{{ asset('asset/script.js') }}"  defer></script
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 <nav>
 
@@ -35,6 +39,13 @@
 </nav>
 
 <section id="banner">
+    <div class="hamburger-menu">
+        <button onclick="toggleHamburgerMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </button>
+    </div>
 
     <img id="banner__banner" src="{{ asset('asset/img/banner3.png') }}" alt="banner">
     <img id="banner__logo" src="{{ asset('asset/img/logo.png') }}" alt="logo">
@@ -42,6 +53,54 @@
     <img id="banner__profil" src="{{ asset('asset/img/profil.png') }}" alt="profil">
 
 </section>
+
+<div class="container">
+    <div class="calendar">
+        <div class="calendar-header">
+            <span class="month-picker" id="month-picker"> Novembre </span>
+            <div class="year-picker" id="year-picker">
+                <span class="year-change" id="pre-year">
+                    <pre><</pre>
+                </span>
+                <span id="year">2020 </span>
+                <span class="year-change" id="next-year">
+                    <pre>></pre>
+                </span>
+            </div>
+        </div>
+
+
+    <div class="calendar-body">
+        <div class="calendar-week-days">
+            <div>Dim</div>
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mer</div>
+            <div>Jeu</div>
+            <div>Ven</div>
+            <div>Sam</div>
+        </div>
+        <div class="calendar-days">
+        </div>
+    </div>
+    <div class="calendar-footer">
+    </div>
+    <div class="date-time-formate">
+        <div class="day-text-formate">TODAY</div>
+        <div class="date-time-value">
+            <div class="time-formate">12:51:20</div>
+            <div class="date-formate">12 - Décembre - 2022</div>
+        </div>
+    </div>
+        <div class="month-list"></div>
+    </div>
+</div>
+
+
+<div class="notes">
+    <h2>Survoler les devoirs pour faire apparaître la note</h2>
+
+</div>
 
 <footer>
     <div class="ref">
@@ -60,4 +119,24 @@
         </div>
     </div>
 </footer>
+
+<div class="modal-container" id="modalContainer">
+    <div class="modal">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <form id="popupForm">
+            <label for="subject">Matière:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="homework">Devoirs:</label>
+            <input type="text" id="homework" name="homework" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+</body>
 {% endblock %}

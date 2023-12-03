@@ -18,6 +18,30 @@
             $(".notes h2").text("Survoler les devoirs pour faire apparaître la note.");
         });
     });
+
+     $(document).ready(function () {
+        $('#filter-input').on('keyup', function () {
+            var keyword = $(this).val().toLowerCase();
+            $('.devoirs__high').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(keyword) > -1);
+            });
+        });
+    });
+    function toggleHamburgerMenu() {
+        var nav = document.querySelector('nav');
+        var button = document.querySelector('.hamburger-menu');
+
+
+
+        if (nav.style.display === "block") {
+            nav.style.display = "none";
+            button.classList.remove('active');
+        } else {
+            nav.style.display = "block";
+            nav.style.top = "80px";
+            button.classList.add('active');
+        }
+    }
 </script>
 
 
@@ -52,6 +76,13 @@
 </nav>
 
 <section id="banner">
+    <div class="hamburger-menu">
+        <button onclick="toggleHamburgerMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </button>
+    </div>
 
     <img id="banner__banner" src="{{ asset('asset/img/banner3.png') }}" alt="banner">
     <img id="banner__logo" src="{{ asset('asset/img/logo.png') }}" alt="logo">
@@ -60,14 +91,12 @@
 
 </section>
 
-<div class="lastp">
-    <h2>Derniers posts</h2>
-
-</div>
-
-<div class="lastp2">
-    <h2>Note des profs :</h2>
-
+    <div class="lastp">
+        <h2>Derniers posts</h2>
+    </div>
+    <div class="lastp3">
+        <input type="text" id="filter-input" placeholder="Recherchez dans les devoirs...">
+        <div id="filtered-results"></div>
 </div>
 
 <section class="fat">

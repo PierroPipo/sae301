@@ -233,3 +233,73 @@ body {
     height: 20px;
     margin-right: 5px;
   }
+  .container {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    flex-direction: column;
+    width: 1300px;
+}
+
+.avatar-selection {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.avatar-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Trois colonnes par ligne par défaut */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* Autres styles */
+}
+
+/* Pour les écrans plus larges, passage à 6 colonnes */
+@media screen and (min-width: 768px) {
+  .avatar-list {
+      grid-template-columns: repeat(6, 1fr); /* Six colonnes pour les écrans plus larges */
+  }
+}
+
+
+.avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.avatar:hover {
+    border: 3px solid #007bff; /* Couleur de la bordure au survol */
+}
+
+.selected-avatar {
+    border: 3px solid #007bff; /* Couleur de la bordure de l'avatar sélectionné */
+}
+
+#select-avatar {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#select-avatar:hover {
+    background-color: #0056b3; /* Couleur au survol du bouton */
+}
+
+.confirmation-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: green;
+}
